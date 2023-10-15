@@ -2396,6 +2396,9 @@ public class InCallController extends CallsManagerListenerBase implements
             for (Map.Entry<InCallServiceInfo, IInCallService> entry : mInCallServices.
                     get(userFromCall).entrySet()) {
                 InCallServiceInfo info = entry.getKey();
+                if (info == null) {
+                    continue;
+                }
                 ComponentName componentName = info.getComponentName();
 
                 // If specified, skip ICS if it matches the package name.  Used for cases where on
